@@ -1,0 +1,7 @@
+version: '2'
+
+services:
+  javaee:
+    build: ./javaee
+    ports:
+      - 8080:8080
