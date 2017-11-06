@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Calculo de ahorros en inversiones</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h1>Datos sobre el usuario y su plan de ahorros</h1>
+            <h:panelGrid columns="2">
+                <h:outputLabel value="Sueldo actual: " />
+                <h:inputText id="txtSueldo" value="${frmAhorro.cliente.sueldo}" />
+                
+                <h:outputLabel value="Porcentaje a guardar: " />
+                <p:spinner id="txtPorcentaje" value="#{frmAhorro.cliente.porcentajeAGuardar}" min="1" max="80" />
+                
+                <h:outputLabel value="Edad actual: " />
+                <h:inputText id="txtEdadActual" value="${frmAhorro.cliente.edadActual}" />
+                
+                <h:outputLabel value="Edad de retiro: " />
+                <h:inputText id="txtEdadRetiro" value="${frmAhorro.cliente.edadRetiro}" />
+                
+                <h:commandButton value="Calcular" id="btnCalcular" actionListener="${frmAhorro.calcularFondosParaRetiro()}" />
+            </h:panelGrid>
+        </h:form>
+        
+        <h:panelGroup rendered="${frmAhorro.hayCalculo}">
+            <h2>Su ahorro será de: </h2>
+            <h:outputLabel value="${frmAhorro.ahorrosCalculados.getValorFinalAsString()}"/>
+        </h:panelGroup>
+    </h:body>
+</html>
+
